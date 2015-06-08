@@ -1,5 +1,6 @@
 package {
 	import com.engine.base.Engine;
+	import screen.ScreenTitle;
 	
 	/**
 	 * Main class.
@@ -19,7 +20,7 @@ package {
 			displayDebug = false;
 			
 			// First screen.
-			screen = new ScreenTitle();
+			screen = new screen.ScreenTitle();
 		}
 	}
 }
