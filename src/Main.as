@@ -15,7 +15,7 @@ package {
 			super(320, 480, 30);
 			
 			// Debug Mode
-			debugMode = false;
+			debugMode = true;
 			displayDebug = false;
 			
 			// First screen.
