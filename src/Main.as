@@ -1,19 +1,22 @@
 package {
-	import Framework.Engine;
+	import com.engine.base.Engine;
 	
 	/**
-	 * ...
+	 * Main class.
 	 * @author Thibaud
 	 */
 	public class Main extends Engine {
 		
+		/**
+		 * Main function.
+		 */
 		public function Main() {
 			// Size : iPod (320 * 480).
 			super(320, 480, 30);
 			
 			// Debug Mode
 			debugMode = true;
-			displayDebug = true;
+			displayDebug = false;
 			
 			// First screen.
 			screen = new ScreenTitle();

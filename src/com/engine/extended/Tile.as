@@ -1,4 +1,5 @@
-package Framework {
+package com.engine.extended {
+	import com.engine.base.Entity;
 	import flash.display.BitmapData;
 
 	/**
@@ -7,6 +8,9 @@ package Framework {
 	 */
 	public class Tile extends Entity {
 		
+		/**
+		 * Constructor.
+		 */
 		public function Tile() {
 			super(10, 10);
 		}

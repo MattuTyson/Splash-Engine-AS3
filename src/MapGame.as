@@ -1,14 +1,21 @@
 package {
 	import flash.utils.Dictionary;
-	import Framework.Map;
-	import Framework.Tile;
+	import com.engine.extended.Map;
+	import com.engine.extended.Tile;
 
 	/**
 	 * The game map.
 	 * @author Thibaud
 	 */
 	public class MapGame extends Map {
+		/**
+		 * The hashMap used to correlate an id to a <code>Tile</code> class.
+		 */
 		private var _hashMap:Dictionary;
+		
+		/**
+		 * The tileMap (in id).
+		 */
 		private var _tileMap:Array = [[1, 1, 1, 1, 1],
 									  [1, 0, 0, 0, 1],
 									  [1, 0, 0, 0, 1],
@@ -43,6 +50,10 @@ package {
 			
 		}
 		
+		/**
+		 * The function used to convert an id array into a <code>Tile</code> class array.
+		 * Associate every id with his <code>Tile</code> class.
+		 */
 		private function convert(array:Array):Array {
 			var returnedArray:Array = new Array();
 			for (var i:uint = 0; i < array.length; ++i) {

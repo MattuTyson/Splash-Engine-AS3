@@ -1,4 +1,5 @@
-package Framework {
+package com.engine.extended {
+	import com.engine.base.Entity;
 	import flash.geom.Rectangle;
 
 	/**
@@ -28,14 +29,14 @@ package Framework {
 		/**
 		 * Fired every frame.
 		 */
-		public function update():void {
+		override public function update():void {
 			
 		}
 		
 		/**
 		 * Fired every frames.
 		 */
-		public function render():void {
+		override public function render():void {
 			draw();
 		}
 		
@@ -51,7 +52,10 @@ package Framework {
 			}
 		}
 		
-		private function changeTileMap():void {
+		/**
+		 * Fired when the tileMap variable changes.
+		 */
+		private function onChangeTileMap():void {
 			draw();
 		}
 		
@@ -66,8 +70,10 @@ package Framework {
 		 * Setter on tileMap
 		 */
 		protected function set tileMap(value:Array):void {
-			this._tileMap = value;
-			changeTileMap();
+			if (this._tileMap != value) {
+				this._tileMap = value;
+				onChangeTileMap();
+			}
 		}
 	}
 }

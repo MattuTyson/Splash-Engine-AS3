@@ -1,4 +1,4 @@
-package Framework {
+package com.engine.base {
 	import flash.desktop.NativeApplication;
 	import flash.display.Sprite;
 	import flash.display.StageAlign;
@@ -13,12 +13,30 @@ package Framework {
 	 * @author Thibaud
 	 */
 	public class Engine extends Sprite {
+		/**
+		 * The width supported by the engine.
+		 */
 		private var _width:uint;
+		
+		/**
+		 * The height supported by the engine.
+		 */
 		private var _height:uint;
+		
+		/**
+		 * The frame per seconds supported by the engine (must be > 0).
+		 */
 		private var _fps:uint;
+		
+		/**
+		 * The counter of the current frame (between 1 and <code>_fps<code>).
+		 */
 		private var _countFrame:uint;
-		public var debugMode:Boolean;
-		private var _waitInput:Boolean;
+		
+		/**
+		 * The current time (in seconds) of the engine.
+		 */
+		private var _time:uint;
 		
 		/**
 		 * The current screen used by the engine.
@@ -26,7 +44,17 @@ package Framework {
 		protected var _screen:Screen;
 		
 		/**
-		 * Allow console to be display on screen.
+		 * Allow the engine to go frame per frame by pressing any touch.
+		 */
+		public var debugMode:Boolean;
+		
+		/**
+		 * Allow the engine to go frame per frame by pressing any touch.
+		 */
+		private var _waitInput:Boolean;
+		
+		/**
+		 * Allow console information.
 		 */
 		public var displayDebug:Boolean;
 		
@@ -50,11 +78,13 @@ package Framework {
 			stage.addEventListener(Event.ENTER_FRAME, onEnterFrame);
 		}
 		
+		/**
+		 * Fired every frame.
+		 */
 		private function onEnterFrame(e:Event):void {
 			if (!debugMode || debugMode && _waitInput) {
 				_waitInput = false;
 				
-				draw();
 				if (displayDebug) {
 					_countFrame++;
 					if (_countFrame > _fps) {
@@ -67,26 +97,39 @@ package Framework {
 				}
 				update();
 				render();
+				draw();
 			}
 		}
 		
+		/**
+		 * Fired when the app deactivate.
+		 */
 		private function deactivate(e:Event):void {
 			// make sure the app behaves well (or exits) when in background
 			NativeApplication.nativeApplication.exit();
 		}
 		
+		/**
+		 * Update function.
+		 */
 		private function update():void {
 			if (screen) {
 				screen.update();
 			}
 		}
 		
+		/**
+		 * Render function.
+		 */
 		private function render():void {
 			if (screen) {
 				screen.render();
 			}
 		}
 		
+		/**
+		 * Draw stuff on the screen.
+		 */
 		private function draw():void {
 			if (screen) {
 				
@@ -100,27 +143,52 @@ package Framework {
 			}
 		}
 		
+		/**
+		 * Fired when a key is released.
+		 */
 		private function onKeyUp(e:KeyboardEvent):void {
 			_waitInput = true;
 		}
 		
+		/**
+		 * Fired when a key is pushed.
+		 */
 		private function onKeyDown(e:KeyboardEvent):void {
 		
 		}
 		
+		/**
+		 * The screen of the engine.
+		 */
+		public function get screen():Screen {
+			return _screen;
+		}
+		
+		/**
+		 * The screen of the engine.
+		 */
 		public function set screen(screen:Screen):void {
 			_screen = screen;
 			_screen.engine = this;
 		}
 		
-		public function get screen():Screen {
-			return _screen;
+		/**
+		 * (read only) The current time (in ms) of the engine.
+		 */
+		public function get time():uint {
+			return _time * 1000 + _countFrame * 1000 / _fps;
 		}
 		
+		/**
+		 * (read only) The width supported by the engine.
+		 */
 		override public function get width():Number {
 			return _width;
 		}
 		
+		/**
+		 * (read only) The height supported by the engine.
+		 */
 		override public function get height():Number {
 			return _height;
 		}
