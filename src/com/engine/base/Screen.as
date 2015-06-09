@@ -46,6 +46,7 @@ package com.engine.base {
 		 * Constructor.
 		 */
 		public function Screen() {
+			super();
 			_entities = new Array();
 		}
 		
@@ -131,8 +132,8 @@ package com.engine.base {
 		public function set engine(value:Engine):void {
 			var isCreated:Boolean = _engine == null;
 			_engine = value;
-			setWidth(_engine.width);
-			setHeight(_engine.height);
+			width = _engine.width;
+			height = _engine.height;
 			if (isCreated) {
 				created();
 			}
@@ -155,30 +156,28 @@ package com.engine.base {
 		/**
 		 * The width of the screen.
 		 */
-		public function get width():uint {
+		public function get width():Number {
 			return _width;
 		}
 		
 		/**
 		 * The width of the screen.
-		 * TODO : #Cheat can't make a proper setter since it already exist in the superclass.
 		 */
-		private function setWidth(value:Number):void {
+		public function set width(value:Number):void {
 			_width = value;
 		}
 		
 		/**
 		 * The width of the screen.
 		 */
-		public function get height():uint {
+		public function get height():Number {
 			return _height;
 		}
 		
 		/**
 		 * The width of the screen.
-		 * TODO : #Cheat can't make a proper setter since it already exist in the superclass.
 		 */
-		private function setHeight(value:Number):void {
+		public function set height(value:Number):void {
 			_height = value;
 		}
 	}

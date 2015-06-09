@@ -39,6 +39,11 @@ package com.engine.base {
 		private var _time:uint;
 		
 		/**
+		 * Allow the engine to go frame per frame by pressing any touch.
+		 */
+		private var _waitInput:Boolean;
+		
+		/**
 		 * The current screen used by the engine.
 		 */
 		protected var _screen:Screen;
@@ -49,11 +54,6 @@ package com.engine.base {
 		public var debugMode:Boolean;
 		
 		/**
-		 * Allow the engine to go frame per frame by pressing any touch.
-		 */
-		private var _waitInput:Boolean;
-		
-		/**
 		 * Allow console information.
 		 */
 		public var displayDebug:Boolean;
@@ -62,6 +62,7 @@ package com.engine.base {
 		 * Constructor.
 		 */
 		public function Engine(width:uint, height:uint, fps:uint) {
+			super();
 			_width = width;
 			_height = height;
 			_fps = fps;

@@ -1,20 +1,14 @@
 package entity {
-	import entity.tile.TileBlock;
-	import entity.tile.TileEmpty;
-	import flash.utils.Dictionary;
 	import com.engine.extended.Map;
 	import com.engine.extended.Tile;
-
+	import entity.tile.TileBlock;
+	import entity.tile.TileEmpty;
+	
 	/**
 	 * The game map.
 	 * @author Thibaud
 	 */
 	public class MapGame extends Map {
-		/**
-		 * The hashMap used to correlate an id to a <code>Tile</code> class.
-		 */
-		private var _hashMap:Dictionary;
-		
 		/**
 		 * The tileMap (in id).
 		 */
@@ -29,45 +23,30 @@ package entity {
 		 */
 		public function MapGame() {
 			super();
-			_hashMap = new Dictionary();
-			_hashMap[0] = TileEmpty;
-			_hashMap[1] = TileBlock;
+			
+			// if the tile does not mach the size
+			// we scale them according to this size.
+			widthTile = 10;
+			heightTile = 10;
+			
+			hashMap[0] = TileEmpty;
+			hashMap[1] = TileBlock;
 			tileMap = convert(_tileMap);
 		}
 		
 		/**
-		 * Fired every frame.
-		 * Computes stuff.
+		 * @inheritDoc
 		 */
 		override public function update():void {
 			super.update();
 		}
 		
 		/**
-		 * Fired every frames.
-		 * Renders stuff.
+		 * @inheritDoc
 		 */
 		override public function render():void {
 			super.render();
-			
-		}
 		
-		/**
-		 * The function used to convert an id array into a <code>Tile</code> class array.
-		 * Associate every id with his <code>Tile</code> class.
-		 */
-		private function convert(array:Array):Array {
-			var returnedArray:Array = new Array();
-			for (var i:uint = 0; i < array.length; ++i) {
-				returnedArray.push(new Array());
-				for (var j:uint = 0; j < array[i].length; ++j) {
-					var currentTile:Tile = new _hashMap[array[i][j]]();
-					currentTile.point.x = j * currentTile.width;
-					currentTile.point.y = i * currentTile.height;
-					returnedArray[i].push(currentTile);
-				}
-			}
-			return returnedArray;
 		}
 	}
 }

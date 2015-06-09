@@ -20,7 +20,7 @@ package screen {
 		 /**
 		 * The player.
 		 */
-		private var _player:entity.Player;
+		private var _player:Player;
 		
 		/**
 		 * The platforms.
@@ -44,8 +44,6 @@ package screen {
 			_map = new MapGame();
 			
 			_player = new Player();
-			_player.width = 10;
-			_player.height = 10;
 			_player.x = (width - _player.width) / 2;
 			_player.y = height - _player.height - 100;
 			
@@ -68,7 +66,7 @@ package screen {
 		}
 		
 		/**
-		 * Fired when the screen update.
+		 * @inheritDoc
 		 */
 		override public function update():void {
 			super.update();
@@ -79,13 +77,6 @@ package screen {
 					_player.y = _platforms[i].y - _player.height;
 				}
 			}
-		}
-		
-		/**
-		 * Fired when the screen render.
-		 */
-		override public function render():void {
-			super.render();
 		}
 	}
 }

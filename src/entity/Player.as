@@ -1,4 +1,6 @@
 package entity {
+	import flash.display.Bitmap;
+	import flash.display.BitmapData;
 	import flash.display.Shape;
 	import com.engine.base.Entity;
 	
@@ -20,31 +22,20 @@ package entity {
 		/**
 		 * Constructor.
 		 */
-		public function Player(x:int = 0, y:int = 0) {
+		public function Player(x:int = 0, y:int = 0, width:uint = 10, height:uint = 10) {
 			super();
 			this.x = x;
 			this.y = y;
-			dy = 1;
-		}
-		
-		/**
-		 * @inheritDoc
-		 */
-		override public function update():void {
-			super.update();
-		}
-		
-		/**
-		 * @inheritDoc
-		 */
-		override public function render():void {
-			super.render();
+			this.width = width;
+			this.height = height;
 			
+			bitmapData = new BitmapData(width, height, true, 0x000000);
 			var shape:Shape = new Shape();
 			shape.graphics.beginFill(0x1E1E1E);
 			shape.graphics.drawRect(0, 0, width, height);
 			shape.graphics.endFill();
 			bitmapData.draw(shape);
+			dy = 1;
 		}
 		
 		/**

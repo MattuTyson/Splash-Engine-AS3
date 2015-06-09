@@ -12,7 +12,7 @@ package com.engine.extended {
 		 * Constructor.
 		 */
 		public function Tile() {
-			super(10, 10);
+			super();
 		}
 	}
 }

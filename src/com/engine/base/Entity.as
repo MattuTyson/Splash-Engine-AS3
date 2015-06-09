@@ -1,5 +1,6 @@
 package com.engine.base {
 	import flash.display.BitmapData;
+	import flash.geom.Matrix;
 	import flash.geom.Point;
 	
 	/**
@@ -29,25 +30,28 @@ package com.engine.base {
 		private var _height:uint;
 		
 		/**
-		 * The entity's coordinates (x; y).
-		 */
-		public var point:Point
-		
-		/**
 		 * The BitmapData used to draw the entity.
 		 */
-		public var bitmapData:BitmapData;
+		private var _bitmapData:BitmapData;
+		
+		/**
+		 * The boolean used to recreate the <code>BitmapData</code> when needed.
+		 */
+		private var _invalidateBitmapData:Boolean;
+		
+		/**
+		 * The entity's coordinates (x; y).
+		 */
+		public var point:Point;
 		
 		/**
 		 * Constructor.
 		 */
-		public function Entity(width:uint = 10, height:uint = 10) {
-			this._width = width;
-			this._height = height;
+		public function Entity() {
+			super();
 			
 			// Initialization.
 			point = new Point(_x, _y);
-			bitmapData = new BitmapData(width, height, true, 0x000000);
 		}
 		
 		/**
@@ -63,7 +67,10 @@ package com.engine.base {
 		 * Override this.
 		 */
 		public function render():void {
-		
+			if (_invalidateBitmapData) {
+				scale(_bitmapData, width, height);
+				_invalidateBitmapData = false;
+			}
 		}
 		
 		/**
@@ -122,7 +129,7 @@ package com.engine.base {
 		 */
 		public function set width(value:uint):void {
 			_width = value;
-			bitmapData = new BitmapData(width, height, true, 0x000000);
+			_invalidateBitmapData = true;
 		}
 		
 		/**
@@ -137,7 +144,40 @@ package com.engine.base {
 		 */
 		public function set height(value:uint):void {
 			_height = value;
-			bitmapData = new BitmapData(width, height, true, 0x000000);
+			_invalidateBitmapData = true;
+		}
+		
+		/**
+		 * The BitmapData used to draw the entity.
+		 */
+		public function get bitmapData():BitmapData {
+			if (_invalidateBitmapData) {
+				scale(_bitmapData, width, height);
+				_invalidateBitmapData = false;
+			}
+			return _bitmapData;
+		}
+		
+		/**
+		 * The BitmapData used to draw the entity.
+		 */
+		public function set bitmapData(value:BitmapData):void {
+			this._bitmapData = value;
+		}
+		
+		/**
+		 * Scale the bitmapData.
+		 */
+		private function scale(bitmapData:BitmapData, width:uint, height:uint):void {
+			if (bitmapData.width != width && bitmapData.height != height) {
+				var scaleWidth:Number = width / this.width;
+				var scaleHeight:Number = height / this.height;
+				var bm:BitmapData = bitmapData;
+				bitmapData = new BitmapData(bm.width * scaleWidth, bm.height * scaleHeight, true, 0x000000);
+				var matrix:Matrix = new Matrix();
+				matrix.scale(scaleWidth, scaleHeight);
+				bitmapData.draw(bm, matrix, null, null, null, true);
+			}
 		}
 	}
 }
