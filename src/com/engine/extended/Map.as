@@ -32,25 +32,19 @@ package com.engine.extended {
 		protected var hashMap:Dictionary;
 		
 		/**
-		 * The Rectangle of the map.
-		 */
-		protected var _rectangle:Rectangle;
-		
-		/**
 		 * Constructor.
 		 */
 		public function Map() {
 			super();
 			hashMap = new Dictionary();
 			_tileMap = new Array();
-			_rectangle = new Rectangle(0, 0, width, height);
 		}
 		
 		/**
 		 * Fired every frame.
 		 */
 		override public function update():void {
-			
+			// Empty at the moment.
 		}
 		
 		/**
@@ -82,10 +76,10 @@ package com.engine.extended {
 				returnedArray.push(new Array());
 				for (j = 0; j < array[i].length; ++j) {
 					var currentTile:Tile = new hashMap[array[i][j]]();
-					currentTile.point.x = j * currentTile.width;
-					currentTile.point.y = i * currentTile.height;
 					currentTile.width = _widthTile;
 					currentTile.height = _heightTile;
+					currentTile.point.x = j * currentTile.width;
+					currentTile.point.y = i * currentTile.height;
 					returnedArray[i].push(currentTile);
 				}
 			}
@@ -99,7 +93,6 @@ package com.engine.extended {
 			// TODO : Clean up.
 			width = tileMap.length * _widthTile;
 			height = tileMap[0].length * _heightTile;
-			
 			bitmapData = new BitmapData(width, height, true, 0x000000);
 			
 			draw();

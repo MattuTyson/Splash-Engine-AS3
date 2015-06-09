@@ -51,12 +51,12 @@ package com.engine.base {
 		/**
 		 * Allow the engine to go frame per frame by pressing any touch.
 		 */
-		public var debugMode:Boolean;
+		protected var debugMode:Boolean;
 		
 		/**
 		 * Allow console information.
 		 */
-		public var displayDebug:Boolean;
+		protected var displayDebug:Boolean;
 		
 		/**
 		 * Constructor.
@@ -184,6 +184,7 @@ package com.engine.base {
 		 * (read only) The width supported by the engine.
 		 */
 		override public function get width():Number {
+			// We don't want to super.width() here.
 			return _width;
 		}
 		
@@ -191,6 +192,7 @@ package com.engine.base {
 		 * (read only) The height supported by the engine.
 		 */
 		override public function get height():Number {
+			// We don't want to super.height() here.
 			return _height;
 		}
 	}

@@ -27,7 +27,7 @@ package entity {
 			// if the tile does not mach the size
 			// we scale them according to this size.
 			widthTile = 10;
-			heightTile = 10;
+			heightTile = 30;
 			
 			hashMap[0] = TileEmpty;
 			hashMap[1] = TileBlock;

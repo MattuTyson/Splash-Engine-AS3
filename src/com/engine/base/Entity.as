@@ -20,6 +20,11 @@ package com.engine.base {
 		private var _y:int;
 		
 		/**
+		 * The entity's coordinates (x; y).
+		 */
+		private var _point:Point;
+		
+		/**
 		 * The entity's width.
 		 */
 		private var _width:uint;
@@ -40,18 +45,13 @@ package com.engine.base {
 		private var _invalidateBitmapData:Boolean;
 		
 		/**
-		 * The entity's coordinates (x; y).
-		 */
-		public var point:Point;
-		
-		/**
 		 * Constructor.
 		 */
 		public function Entity() {
 			super();
 			
 			// Initialization.
-			point = new Point(_x, _y);
+			_point = new Point(_x, _y);
 		}
 		
 		/**
@@ -59,7 +59,7 @@ package com.engine.base {
 		 * Override this.
 		 */
 		public function update():void {
-		
+			// Empty at the moment.
 		}
 		
 		/**
@@ -67,8 +67,9 @@ package com.engine.base {
 		 * Override this.
 		 */
 		public function render():void {
+			// TODO : clean up.
 			if (_invalidateBitmapData) {
-				scale(_bitmapData, width, height);
+				bitmapData = scale(_bitmapData, width, height);
 				_invalidateBitmapData = false;
 			}
 		}
@@ -88,6 +89,22 @@ package com.engine.base {
 		}
 		
 		/**
+		 * Returns a new scaled <code>BitmapData</code>.
+		 */
+		private function scale(bitmapData:BitmapData, width:uint, height:uint):BitmapData {
+			if (bitmapData.width != width || bitmapData.height != height) {
+				var scaleWidth:Number = width / bitmapData.width;
+				var scaleHeight:Number = height / bitmapData.height;
+				var bm:BitmapData = bitmapData;
+				bitmapData = new BitmapData(bm.width * scaleWidth, bm.height * scaleHeight, true, 0x000000);
+				var matrix:Matrix = new Matrix();
+				matrix.scale(scaleWidth, scaleHeight);
+				bitmapData.draw(bm, matrix, null, null, null, true);
+			}
+			return bitmapData;
+		}
+		
+		/**
 		 * The entity's x position.
 		 */
 		public function get x():int {
@@ -98,6 +115,7 @@ package com.engine.base {
 		 * The entity's x position.
 		 */
 		public function set x(value:int):void {
+			// TODO : Clean up.
 			point.x = value;
 			_x = value;
 		}
@@ -113,8 +131,23 @@ package com.engine.base {
 		 * The entity's y position.
 		 */
 		public function set y(value:int):void {
+			// TODO : Clean up.
 			point.y = value;
 			_y = value;
+		}
+		
+		/**
+		 * The entity's coordinates (x; y).
+		 */
+		public function get point():Point {
+			return _point;
+		}
+		
+		/**
+		 * The entity's coordinates (x; y).
+		 */
+		public function set point(value:Point):void {
+			_point = value;
 		}
 		
 		/**
@@ -128,8 +161,10 @@ package com.engine.base {
 		 * The entity's width.
 		 */
 		public function set width(value:uint):void {
-			_width = value;
-			_invalidateBitmapData = true;
+			if (_width != value) {
+				_width = value;
+				_invalidateBitmapData = true;
+			}
 		}
 		
 		/**
@@ -143,16 +178,19 @@ package com.engine.base {
 		 * The entity's height.
 		 */
 		public function set height(value:uint):void {
-			_height = value;
-			_invalidateBitmapData = true;
+			if (_height != value) {
+				_height = value;
+				_invalidateBitmapData = true;
+			}
 		}
 		
 		/**
 		 * The BitmapData used to draw the entity.
 		 */
 		public function get bitmapData():BitmapData {
+			// TODO : clean up.
 			if (_invalidateBitmapData) {
-				scale(_bitmapData, width, height);
+				_bitmapData = scale(_bitmapData, width, height);
 				_invalidateBitmapData = false;
 			}
 			return _bitmapData;
@@ -162,22 +200,7 @@ package com.engine.base {
 		 * The BitmapData used to draw the entity.
 		 */
 		public function set bitmapData(value:BitmapData):void {
-			this._bitmapData = value;
-		}
-		
-		/**
-		 * Scale the bitmapData.
-		 */
-		private function scale(bitmapData:BitmapData, width:uint, height:uint):void {
-			if (bitmapData.width != width && bitmapData.height != height) {
-				var scaleWidth:Number = width / this.width;
-				var scaleHeight:Number = height / this.height;
-				var bm:BitmapData = bitmapData;
-				bitmapData = new BitmapData(bm.width * scaleWidth, bm.height * scaleHeight, true, 0x000000);
-				var matrix:Matrix = new Matrix();
-				matrix.scale(scaleWidth, scaleHeight);
-				bitmapData.draw(bm, matrix, null, null, null, true);
-			}
+			_bitmapData = value;
 		}
 	}
 }

@@ -12,7 +12,7 @@ package entity {
 		/**
 		 * Constructor.
 		 */
-		public function Platform(x:int = 0, y:int = 0, width:uint = 100, height:uint = 25) {
+		public function Platform(x:int = 0, y:int = 0, width:uint = 100, height:uint = 20) {
 			super();
 			this.x = x;
 			this.y = y;

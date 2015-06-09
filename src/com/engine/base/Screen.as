@@ -33,11 +33,6 @@ package com.engine.base {
 		protected var _bitmapData:BitmapData;
 		
 		/**
-		 * The Rectangle (width x height) of the screen.
-		 */
-		protected var _rectangle:Rectangle;
-		
-		/**
 		 * The array of entities.
 		 */
 		public var _entities:Array;
@@ -54,8 +49,7 @@ package com.engine.base {
 		 * Fired when the engine variable is created.
 		 */
 		protected function created():void {
-			this.bitmapData = new BitmapData(_engine.width, _engine.height, false, 0x000000);
-			_rectangle = new Rectangle(0, 0, _engine.width, _engine.height);
+			bitmapData = new BitmapData(_engine.width, _engine.height, false, 0x000000);
 		}
 		
 		/**
@@ -92,7 +86,7 @@ package com.engine.base {
 		 * Clear the screen.
 		 */
 		public function clear():void {
-			bitmapData.fillRect(_rectangle, 0x000000);
+			bitmapData.fillRect(bitmapData.rect, 0x000000);
 		}
 		
 		/**
@@ -140,6 +134,34 @@ package com.engine.base {
 		}
 		
 		/**
+		 * The width of the screen.
+		 */
+		public function get width():uint {
+			return _width;
+		}
+		
+		/**
+		 * The width of the screen.
+		 */
+		public function set width(value:uint):void {
+			_width = value;
+		}
+		
+		/**
+		 * The width of the screen.
+		 */
+		public function get height():uint {
+			return _height;
+		}
+		
+		/**
+		 * The width of the screen.
+		 */
+		public function set height(value:uint):void {
+			_height = value;
+		}
+		
+		/**
 		 * The BitmapData used to draw the screen.
 		 */
 		public function get bitmapData():BitmapData {
@@ -151,34 +173,6 @@ package com.engine.base {
 		 */
 		public function set bitmapData(value:BitmapData):void {
 			_bitmapData = value;
-		}
-		
-		/**
-		 * The width of the screen.
-		 */
-		public function get width():Number {
-			return _width;
-		}
-		
-		/**
-		 * The width of the screen.
-		 */
-		public function set width(value:Number):void {
-			_width = value;
-		}
-		
-		/**
-		 * The width of the screen.
-		 */
-		public function get height():Number {
-			return _height;
-		}
-		
-		/**
-		 * The width of the screen.
-		 */
-		public function set height(value:Number):void {
-			_height = value;
 		}
 	}
 }

@@ -15,7 +15,7 @@ package screen {
 		/**
 		 * The map.
 		 */
-		private var _map:entity.MapGame;
+		private var _map:MapGame;
 		
 		 /**
 		 * The player.
@@ -51,7 +51,7 @@ package screen {
 			for (i = 0; i < 5; ++i) {
 				var platform:Platform = new Platform();
 				platform.width = 100;
-				platform.height = 25;
+				platform.height = 20;
 				platform.x = -platform.width / 2 + Math.random() * width;
 				platform.y = i * 100;
 				_platforms.push(platform);
@@ -77,6 +77,13 @@ package screen {
 					_player.y = _platforms[i].y - _player.height;
 				}
 			}
+		}
+		
+		/**
+		 * @inheritDoc
+		 */
+		override public function render():void {
+			super.render();
 		}
 	}
 }
