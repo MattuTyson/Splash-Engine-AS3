@@ -50,8 +50,6 @@ package screen {
 			_platforms = new Array();
 			for (i = 0; i < 5; ++i) {
 				var platform:Platform = new Platform();
-				platform.width = 100;
-				platform.height = 20;
 				platform.x = -platform.width / 2 + Math.random() * width;
 				platform.y = i * 100;
 				_platforms.push(platform);

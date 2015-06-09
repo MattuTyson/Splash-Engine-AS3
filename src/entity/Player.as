@@ -39,6 +39,20 @@ package entity {
 		}
 		
 		/**
+		 * @inheritDoc
+		 */
+		override public function update():void {
+			super.update();
+		}
+		
+		/**
+		 * @inheritDoc
+		 */
+		override public function render():void {
+			super.render();
+		}
+		
+		/**
 		 * Determinates if the player fall onto an entity.
 		 * Return true if the player fall onto the entity,
 		 * false otherwise.

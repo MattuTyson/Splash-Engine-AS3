@@ -24,5 +24,19 @@ package entity.tile {
 			shape.graphics.endFill();
 			bitmapData.draw(shape);
 		}
+		
+		/**
+		 * @inheritDoc
+		 */
+		override public function update():void {
+			super.update();
+		}
+		
+		/**
+		 * @inheritDoc
+		 */
+		override public function render():void {
+			super.render();
+		}
 	}
 }

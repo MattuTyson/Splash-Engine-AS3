@@ -1,5 +1,5 @@
 package com.engine.base {
-
+	
 	/**
 	 * The BaseClass allows us to cheat within the framework.
 	 * @author Thibaud
@@ -21,6 +21,8 @@ package com.engine.base {
 		public function BaseClass() {
 			i = 0;
 			j = 0;
+			// You may want to use this to force implementing some methods.
+			//import flash.utils.describeType;
 		}
 	}
 }

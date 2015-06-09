@@ -14,5 +14,19 @@ package com.engine.extended {
 		public function Tile() {
 			super();
 		}
+		
+		/**
+		 * @inheritDoc
+		 */
+		override public function update():void {
+			super.update();
+		}
+		
+		/**
+		 * @inheritDoc
+		 */
+		override public function render():void {
+			super.render();
+		}
 	}
 }

@@ -41,16 +41,17 @@ package com.engine.extended {
 		}
 		
 		/**
-		 * Fired every frame.
+		 * @inheritDoc
 		 */
 		override public function update():void {
-			// Empty at the moment.
+			super.update();
 		}
 		
 		/**
-		 * Fired every frames.
+		 * @inheritDoc
 		 */
 		override public function render():void {
+			super.render();
 			draw();
 		}
 		
