@@ -4,7 +4,7 @@ package {
   
   /**
    * Main class.
-   * Needs to extends <code>Engine</code> to use the engine.
+   * Needs to extend <code>Engine</code> to use the engine.
    * @author Thibaud
    */
   public class Main extends Engine {
