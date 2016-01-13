@@ -9,7 +9,7 @@ package com.engine.base {
   import flash.ui.MultitouchInputMode;
   
   /**
-   * Main class should extends this to make an Engine.
+   * Main class should extend this to make an Engine.
    * @author Thibaud
    */
   public class Engine extends Sprite {
