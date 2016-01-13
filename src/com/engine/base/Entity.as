@@ -5,7 +5,7 @@ package com.engine.base {
   
   /**
    * Entity class.
-   * Define a graphical entity.
+   * Defines a graphical entity.
    * @author Thibaud
    */
   public class Entity extends BaseClass {
