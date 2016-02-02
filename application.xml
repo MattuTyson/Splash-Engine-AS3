@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?> 
-<application xmlns="http://ns.adobe.com/air/application/3.9">
+<application xmlns="http://ns.adobe.com/air/application/3.1">
 	
-	<id>air.Subtle</id>
+	<id>air.SplashEngine</id>
 	<versionNumber>0.1</versionNumber>
 	<supportedProfiles>mobileDevice</supportedProfiles>
-	<filename>Subtle</filename>
+	<filename>SplashEngine</filename>
 	
-	<name>Subtle</name>
+	<name>SplashEngine</name>
 	<description></description>
 	<copyright></copyright>
 	
@@ -46,8 +46,8 @@
     </iPhone> 
 	
 	<initialWindow>
-		<title>Subtle</title>
-		<content>Subtle.swf</content>
+		<title>SplashEngine</title>
+		<content>SplashEngine.swf</content>
 		<visible>true</visible>
 		<fullScreen>true</fullScreen>
 		<!--<autoOrients>false</autoOrients>-->

@@ -1,2 +1,2 @@
-# Engine
-AS3 Game Engine
+# SplashEngine (AS3)
+An AS3 Game Engine.

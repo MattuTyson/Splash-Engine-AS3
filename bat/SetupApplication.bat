@@ -1,14 +1,15 @@
 :user_configuration
 
 :: About AIR application packaging
-:: http://help.adobe.com/en_US/air/build/WS5b3ccc516d4fbf351e63e3d118666ade46-7fd9.html
+:: http://livedocs.adobe.com/flex/3/html/help.html?content=CommandLineTools_5.html#1035959
+:: http://livedocs.adobe.com/flex/3/html/distributing_apps_4.html#1037515
 
 :: NOTICE: all paths are relative to project root
 
 :: Android packaging
-set AND_CERT_NAME="Subtle"
+set AND_CERT_NAME="SplashEngine"
 set AND_CERT_PASS=fd
-set AND_CERT_FILE=cert\Subtle.p12
+set AND_CERT_FILE=cert\SplashEngine.p12
 set AND_ICONS=icons/android
 
 set AND_SIGNING_OPTIONS=-storetype pkcs12 -keystore "%AND_CERT_FILE%" -storepass %AND_CERT_PASS%
@@ -17,7 +18,7 @@ set AND_SIGNING_OPTIONS=-storetype pkcs12 -keystore "%AND_CERT_FILE%" -storepass
 set IOS_DIST_CERT_FILE=
 set IOS_DEV_CERT_FILE=
 set IOS_DEV_CERT_PASS=
-set IOS_PROVISION=cert\Subtle.mobileprovision
+set IOS_PROVISION=cert\SplashEngine.mobileprovision
 set IOS_ICONS=icons/ios
 
 set IOS_DEV_SIGNING_OPTIONS=-storetype pkcs12 -keystore "%IOS_DEV_CERT_FILE%" -storepass %IOS_DEV_CERT_PASS% -provisioning-profile %IOS_PROVISION%
@@ -31,12 +32,11 @@ set APP_DIR=bin
 set FILE_OR_DIR=-C %APP_DIR% .
 
 :: Your application ID (must match <id> of Application descriptor)
-for /f "tokens=3 delims=<>" %%a in ('findstr /C:"<id>" %APP_XML%') do set APP_ID=%%a
-set APP_ID=%APP_ID: =%
+set APP_ID=air.SplashEngine
 
 :: Output packages
 set DIST_PATH=dist
-set DIST_NAME=Subtle
+set DIST_NAME=SplashEngine
 
 :: Debugging using a custom IP
 set DEBUG_IP=
