@@ -4,7 +4,7 @@ package com.splashEngine.game {
     
     /**
      * The <code>Game</code> class.
-     * Extends <code>Engine<code> to make a game.
+     * Extends <code>Engine</code> to make a game.
      *
      * @author MattuTyson
      */
