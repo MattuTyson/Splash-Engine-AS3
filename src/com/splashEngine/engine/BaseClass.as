@@ -1,7 +1,7 @@
 package com.splashEngine.engine {
     
     /**
-     * The <code>BaseClass</code> cash properties and methods within the framework.
+     * The <code>BaseClass</code> provides properties and methods within the framework.
      *
      * @author MattuTyson
      */
